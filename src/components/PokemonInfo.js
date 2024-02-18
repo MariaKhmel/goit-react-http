@@ -36,7 +36,7 @@ export class PokemonInfo extends Component {
 
 
     render() {
-        const { pokemon, error, status } = this.state;
+        const { error, status } = this.state;
        
 
         if (status === Status.IDLE) {
