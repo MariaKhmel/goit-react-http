@@ -1,27 +1,40 @@
-import { Component } from "react";
-import PokemonForm from "./PokemonForm";
+import { Component } from 'react';
+import PokemonForm from './PokemonForm';
 import { ToastContainer } from 'react-toastify';
-import {PokemonInfo} from "./PokemonInfo";
+import { PokemonInfo } from './PokemonInfo';
 import 'react-toastify/dist/ReactToastify.css';
+import { useId, useState } from 'react';
+const Profile = ({ name, email }) => (
+  <div>
+    <p>Name: {name}</p>
+    <p>Email: {email}</p>
+  </div>
+);
 
-export class App extends Component{
-  state = {
-    pokemonName: '',
-  }
+const Panel = ({ title, children }) => (
+  <section>
+    <h2>{title}</h2>
+    {/* {children} */}
+  </section>
+);
+export function App() {
+  const [coffeeSize, setCoffeeSize] = useState('sm');
 
-  handleFormSubmit = pokemonName => {
-   this.setState({pokemonName})
-  }
-
-  render(){
-    return (
-      <>
-        <div style={{ maxWidth: 1170, margin: '0 auto', padding: 20 }}>
-        <PokemonForm onSubmit={this.handleFormSubmit} />
-         <PokemonInfo pokemonName={this.state.pokemonName} />
-         <ToastContainer autoClose={3000}/> 
-      </div>
-      </>
-  )
-  }
+  return (
+    <>
+      <h1>Select coffee size</h1>
+      <label>
+        <input type="radio" name="coffeeSize" value="sm" />
+        Small
+      </label>
+      <label>
+        <input type="radio" name="coffeeSize" value="md" />
+        Meduim
+      </label>
+      <label>
+        <input type="radio" name="coffeeSize" value="lg" />
+        Large
+      </label>
+    </>
+  );
 }
